@@ -47,7 +47,16 @@ submit.onclick = function () {
       count: count.value,
       category: category.value.toLowerCase(),
     }
-dataPro.push(newPro);
+    // Create any number of products at once
+    if (newPro.count > 1) {
+        for (let i = 0; i < newPro.count; i++) {
+          dataPro.push(newPro);
+        }
+      } else {
+        dataPro.push(newPro);
+      }
+
+//save localstorage   
 localStorage.setItem("product", JSON.stringify(dataPro));
 
 clearData()
@@ -88,7 +97,14 @@ function showData() {
               `
     }
     document.getElementById("tbody").innerHTML = table;
-    
+    let btnDelete = document.getElementById("deleteAll");
+    if (dataPro.length > 0) {
+      btnDelete.innerHTML = `
+          <button onclick="deleteAll()">Delete All (${dataPro.length})</button>
+          `;
+    } else {
+      btnDelete.innerHTML = "";
+    }
   }
   
 // Keep this function global to make sure the data on table always visible
@@ -99,5 +115,13 @@ showData();
 function deleteData(i) {
     dataPro.splice(i, 1);
     localStorage.product = JSON.stringify(dataPro); // Get and update the data from dataPro
+    showData();
+  }
+
+
+  // function to delete all items 
+  function deleteAll() {
+    localStorage.clear();
+    dataPro.splice(0);
     showData();
   }
