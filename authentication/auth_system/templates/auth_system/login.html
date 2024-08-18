@@ -12,6 +12,26 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Login Page!</h1>
+    <h1>login Page!</h1>
+
+    <!-- Login form includes ARIA attributes for better accessibility.-->
+    <div class="form">
+        <form action="" method="POST">
+            {% csrf_token %}
+            
+            <div>
+                <label for="uname">Username:</label>
+                <input type="text" id="uname" name="uname" placeholder="Create a username" title="Please create a username" aria-describedby="uname-desc" required>
+            </div>
+    
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="pass" placeholder="Create a password" title="Please create a password" aria-describedby="password-desc" required>
+            </div>
+    
+            <button type="submit" aria-label="Submit Registration">Submit</button>
+        </form>
+    </div>
+    
 </body>
 </html>
