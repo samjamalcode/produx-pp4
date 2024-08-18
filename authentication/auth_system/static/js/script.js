@@ -13,7 +13,7 @@ let submit = document.getElementById("submit");
 let mood = "create";
 let tmp;
 
-// Calculating total
+// Function for calculating total
 function getTotal() {
     if (price.value != 0) {
       let result = +price.value + +taxes.value + +ads.value - +discount.value;
@@ -27,12 +27,11 @@ function getTotal() {
 
   // Load data from localStorage
   let dataPro;
-  if (localStorage.product != null) {
-    dataPro = JSON.parse(localStorage.product);
-  } else {
-    dataPro = [];
-  }
-
+if (localStorage.product != null) {
+  dataPro = JSON.parse(localStorage.product);
+} else {
+  dataPro = [];
+}
 
 // Submit button click event handler
 // This function create a new object (collect data and store it in 'dataPro' array)
@@ -47,31 +46,34 @@ submit.onclick = function () {
       count: count.value,
       category: category.value.toLowerCase(),
     }
-    // Create any number of products at once
-    if (mood === "create") {
-        if (newPro.count > 1) {
-          for (let i = 0; i < newPro.count; i++) {
-            dataPro.push(newPro);
-          }
-        } else {
+  
+    // Prevent user to leave fields empty
+    if(title.value != '' 
+    && price.value != '' 
+    && category.value != ''
+    && newPro.count < 100) {
+      if (mood === "create") {
+      if (newPro.count > 1) {
+        for (let i = 0; i < newPro.count; i++) {
           dataPro.push(newPro);
         }
       } else {
-        dataPro[tmp] = newPro;
-        mood = "create";
-        submit.innerHTML = "Create";
-        count.style.display = "block";
+        dataPro.push(newPro);
       }
-      // Save local storage
-      localStorage.setItem("product", JSON.stringify(dataPro));
-      clearData();
-      showData();
-    };
-    
-
-
-// Function to clear input fields when we clicking create button
-function clearData() {
+    } else {
+      dataPro[tmp] = newPro;
+      mood = "create";
+      submit.innerHTML = "Create";
+      count.style.display = "block";
+    }
+    clearData();
+  }
+    localStorage.setItem("product", JSON.stringify(dataPro));
+    showData();
+  };
+  
+  // Function to clear input fields when we clicking create button
+  function clearData() {
     title.value = "";
     price.value = "";
     taxes.value = "";
@@ -80,13 +82,11 @@ function clearData() {
     total.innerHTML = "";
     count.value = "";
     category.value = "";
-  };
-
-
-
-// Function to display data on HTML table
-function showData() {
-    getTotal()
+  }
+ 
+  // Function to display data on HTML table
+  function showData() {
+    getTotal();
     let table = "";
     for (let i = 0; i < dataPro.length; i++) {
       table += `
@@ -102,7 +102,7 @@ function showData() {
                      <td><button onclick="updateData(${i})" id="update">update</button></td>
                      <td><button onclick="deleteData( ${i})" id="delete">delete</button></td>
               </tr>
-              `
+          `;
     }
     document.getElementById("tbody").innerHTML = table;
     let btnDelete = document.getElementById("deleteAll");
@@ -115,18 +115,16 @@ function showData() {
     }
   }
   
-// Keep this function global to make sure the data on table always visible
-showData();  
+  // Keep this function global to make sure the data on table always visible
+  showData();
 
-
-// Function to delete a single item
+  // Function to delete a single item
 function deleteData(i) {
     dataPro.splice(i, 1);
     localStorage.product = JSON.stringify(dataPro); // Get and update the data from dataPro
     showData();
   }
-
-
+  
   // function to delete all items 
   function deleteAll() {
     localStorage.clear();
@@ -134,10 +132,8 @@ function deleteData(i) {
     showData();
   }
 
-
-
-// Function to update data
-function updateData(i) {
+  // Function to update data
+  function updateData(i) {
     title.value = dataPro[i].title;
     price.value = dataPro[i].price;
     taxes.value = dataPro[i].taxes;
@@ -154,13 +150,12 @@ function updateData(i) {
 
     // Scroll to the top smoothly when updating data
     scroll({
-        top: 0,
-        behavior: "smooth",
-      });
-}
+      top: 0,
+      behavior: "smooth",
+    });
+  }
 
-
-// Search function
+  // Search function
   // Initialize search mode variable
   let searchMood = "title";
 
