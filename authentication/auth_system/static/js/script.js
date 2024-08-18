@@ -12,3 +12,15 @@ let submit = document.getElementById("submit");
 // Initialize variables
 let mood = "create";
 let tmp;
+
+// Calculating total
+function getTotal() {
+    if (price.value != 0) {
+      let result = +price.value + +taxes.value + +ads.value - +discount.value;
+      total.innerHTML = result;
+      total.style.backgroundColor = "green";
+    } else {
+      total.innerHTML = "";
+      total.style.backgroundColor = "#db1d0f";
+    }
+  }
