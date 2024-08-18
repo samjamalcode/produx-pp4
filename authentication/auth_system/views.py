@@ -6,7 +6,7 @@ def HomePage(request):
     return render(request, 'auth_system/index.html', {})
 
 def Register(request):
-    pass
+    return render(request, 'auth_system/register.html', {})
 
 def Login(request):
     pass
