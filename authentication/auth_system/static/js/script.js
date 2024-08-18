@@ -34,7 +34,7 @@ function getTotal() {
   }
 
 
-  // Submit button click event handler
+// Submit button click event handler
 // This function create a new object (collect data and store it in 'dataPro' array)
 submit.onclick = function () {
     let newPro = {
@@ -49,5 +49,49 @@ submit.onclick = function () {
     }
 dataPro.push(newPro);
 localStorage.setItem("product", JSON.stringify(dataPro));
-showData();
+
+clearData()
+showData()
 };
+
+// Function to clear input fields when we clicking create button
+function clearData() {
+    title.value = "";
+    price.value = "";
+    taxes.value = "";
+    ads.value = "";
+    discount.value = "";
+    total.innerHTML = "";
+    count.value = "";
+    category.value = "";
+  };
+
+
+
+// Function to display data on HTML table
+function showData() {
+    let table = "";
+    for (let i = 0; i < dataPro.length; i++) {
+      table += `
+              <tr>
+                     <td>${i+1}</td>
+                     <td>${dataPro[i].title}</td>
+                     <td>${dataPro[i].price}</td>
+                     <td>${dataPro[i].taxes}</td>
+                     <td>${dataPro[i].ads}</td>
+                     <td>${dataPro[i].discount}</td>
+                     <td>${dataPro[i].total}</td>
+                     <td>${dataPro[i].category}</td>
+                     <td><button id="update">update</button></td>
+                     <td><button id="delete">delete</button></td>
+              </tr>
+              `
+    }
+    document.getElementById("tbody").innerHTML = table;
+    
+  }
+  
+  // Keep this function global to make sure the data on table always visible
+  showData();  
+
+
