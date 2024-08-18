@@ -24,3 +24,30 @@ function getTotal() {
       total.style.backgroundColor = "#db1d0f";
     }
   }
+
+  // Load data from localStorage
+  let dataPro;
+  if (localStorage.product != null) {
+    dataPro = JSON.parse(localStorage.product);
+  } else {
+    dataPro = [];
+  }
+
+
+  // Submit button click event handler
+// This function create a new object (collect data and store it in 'dataPro' array)
+submit.onclick = function () {
+    let newPro = {
+      title: title.value.toLowerCase(),
+      price: price.value,
+      taxes: taxes.value,
+      ads: ads.value,
+      discount: discount.value,
+      total: total.innerHTML,
+      count: count.value,
+      category: category.value.toLowerCase(),
+    }
+dataPro.push(newPro);
+localStorage.setItem("product", JSON.stringify(dataPro));
+showData();
+};
