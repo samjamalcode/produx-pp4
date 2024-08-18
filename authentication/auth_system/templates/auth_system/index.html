@@ -8,14 +8,104 @@
      <meta name="keywords" content="crud, create, read, update, delete, database, management, web app, data">
      <!-- Title -->
     <title>Produx</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <!-- Favicon -->
-   
-
-    <link rel="apple-touch-icon" sizes="180x180" href="static/images/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'css/images/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'css/images/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'css/images/favicon/favicon-16x16.png' %}">
 
 </head>
 <body>
-    <h1>Home Page</h1>
-    
+    <!-- Main container with the class "crud" -->
+    <div class="crud">
+        <div class="head">
+            <h2 >Produx</h2>
+            <p>Item Supervision System</p>
+        </div>
+        <!-- Input section for data entry -->
+        <div class="inputs">
+            <!-- Input fields for title, price, taxes, ads, discount -->
+            <input type="text" placeholder="title" id="title">
+            <div class="price">
+                <input onkeyup="getTotal()" type="number" placeholder="price" id="price">
+                <input onkeyup="getTotal()" type="number" placeholder="taxes" id="taxes">
+                <input onkeyup="getTotal()" type="number" placeholder="ads" id="ads">
+                <input onkeyup="getTotal()" type="number" placeholder="discount" id="discount">
+                <small id="total"></small>
+            </div>
+            <!-- Input field for count and category, and a button to submit data -->
+            <input type="number" placeholder="count" id="count">
+            <input type="text" placeholder="category" id="category">
+            <button id="submit">Create</button>
+        </div>
+        <!-- Output section for displaying data -->
+        <div class="outputs">
+            <!-- Search block with input field and buttons for search -->
+            <div class="searchBlock">
+                <input onkeyup="searchData(this.value)" type="text" placeholder="Search" id="search">
+                <div class="btnSearch">
+                    <button onclick="getSearchMood(this.id)" id="searchTitle">Search By Title</button>
+                    <button onclick="getSearchMood(this.id)" id="searchCategory">Search By Category</button>
+                </div>
+            </div>
+        </div>
+        <!-- A div to create a 'delete all' button in JavaScrript -->
+        <div id="deleteAll"></div>
+        <table>
+           <tr>
+            <!-- Table header columns -->
+               <th>id</th>
+               <th>title</th>
+               <th>price</th>
+               <th>taxes</th>
+               <th>ads</th>
+               <th>discount</th>
+               <th>total</th>
+               <th>category</th>
+               <th>update</th>
+               <th>delete</th>
+           </tr>
+           <!-- Table body for displaying dynamic data (commented out for now) -->
+           <tbody id="tbody">
+            <!-- Table content will be implemented in JavaScript -->  
+           </tbody>
+        </table>
+     </div>
+
+     <!-- Footer Section-->
+<footer>
+    <div class="social-media">
+      <a
+        href="https://www.facebook.com"
+        target="_blank" rel="noopener"
+        aria-label="Visit our Facebook page (opens in a new tab)"
+        ><i class="fa-brands fa-facebook" style="color: #ffffff"></i
+      ></a>
+
+      <a
+        href="https://www.instagram.com"
+        target="_blank" rel="noopener"
+        aria-label="Visit our Instagram page (opens in a new tab)"
+        ><i class="fa-brands fa-square-instagram" style="color: #ffffff"></i
+      ></a>
+
+      <a
+        href="https://twitter.com"
+        target="_blank" rel="noopener"
+        aria-label="Visit our Twitter page (opens in a new tab)"
+        ><i class="fa-brands fa-square-twitter" style="color: #ffffff"></i
+      ></a>
+    </div>
+  </footer>
+
+  <!-- Fontawesome Icons -->
+  <script src="https://kit.fontawesome.com/b5633ebce6.js" crossorigin="anonymous"></script>
+
+  <!-- JavaScript file reference -->
+  <script src="assets/js/script.js"></script>
+
+
+    <button><a href="{% url 'logout' %}">Logout</a></button>
 </body>
 </html>

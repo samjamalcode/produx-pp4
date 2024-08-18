@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 # Create your views here.
-
+@login_required
 def HomePage(request):
     return render(request, 'auth_system/index.html', {})
 
@@ -26,8 +29,21 @@ def Register(request):
         return render(request, 'auth_system/register.html', {})
 
 def Login(request):
-    if request.method == 'POST':  
+    if request.method == 'POST': 
         name  = request.POST.get('uname')
         password  = request.POST.get('pass')
+
+        user = authenticate(request, username=name, password=password)
+        if user is not None: 
+            login(request, user)
+            return redirect('home-page')
+        else:
+            return HttpResponse('Error, user does not exist')
     
     return render(request, 'auth_system/login.html', {})
+
+
+
+def logoutuser(request):
+    logout(request)
+    return redirect('login-page')  
