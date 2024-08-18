@@ -82,8 +82,8 @@ function showData() {
                      <td>${dataPro[i].discount}</td>
                      <td>${dataPro[i].total}</td>
                      <td>${dataPro[i].category}</td>
-                     <td><button id="update">update</button></td>
-                     <td><button id="delete">delete</button></td>
+                     <td><button onclick="updateData(${i})" id="update">update</button></td>
+                     <td><button onclick="deleteData( ${i})" id="delete">delete</button></td>
               </tr>
               `
     }
@@ -91,7 +91,13 @@ function showData() {
     
   }
   
-  // Keep this function global to make sure the data on table always visible
-  showData();  
+// Keep this function global to make sure the data on table always visible
+showData();  
 
 
+// Function to delete a single item
+function deleteData(i) {
+    dataPro.splice(i, 1);
+    localStorage.product = JSON.stringify(dataPro); // Get and update the data from dataPro
+    showData();
+  }
