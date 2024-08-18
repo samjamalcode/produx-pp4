@@ -48,20 +48,26 @@ submit.onclick = function () {
       category: category.value.toLowerCase(),
     }
     // Create any number of products at once
-    if (newPro.count > 1) {
-        for (let i = 0; i < newPro.count; i++) {
+    if (mood === "create") {
+        if (newPro.count > 1) {
+          for (let i = 0; i < newPro.count; i++) {
+            dataPro.push(newPro);
+          }
+        } else {
           dataPro.push(newPro);
         }
       } else {
-        dataPro.push(newPro);
+        dataPro[tmp] = newPro;
+        mood = "create";
+        submit.innerHTML = "Create";
+        count.style.display = "block";
       }
+      // Save local storage
+      localStorage.setItem("product", JSON.stringify(dataPro));
+      clearData();
+      showData();
+    };
 
-//save localstorage   
-localStorage.setItem("product", JSON.stringify(dataPro));
-
-clearData()
-showData()
-};
 
 // Function to clear input fields when we clicking create button
 function clearData() {
@@ -125,3 +131,28 @@ function deleteData(i) {
     dataPro.splice(0);
     showData();
   }
+
+
+
+// Function to update data
+function updateData(i) {
+    title.value = dataPro[i].title;
+    price.value = dataPro[i].price;
+    taxes.value = dataPro[i].taxes;
+    ads.value = dataPro[i].ads;
+    discount.value = dataPro[i].discount;
+    getTotal();
+    count.style.display = "none";
+    category.value = dataPro[i].category;
+    submit.innerHTML = "Update";
+    mood = "update";
+
+    // Add the variable 'tmp' to make the index variable (i) global
+    tmp = i;
+
+    // Scroll to the top smoothly when updating data
+    scroll({
+        top: 0,
+        behavior: "smooth",
+      });
+}
