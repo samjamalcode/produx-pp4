@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-samjamalcode-produxpp4-ewh493l12ok.ws.codeinstitute-ide.net',
     'https://8000-samjamalcode-produxpp4-351kwxyqlci.ws.codeinstitute-ide.net',
+    'https://8000-samjamalcode-produxpp4-feb4l3agbiq.ws.codeinstitute-ide.net',
     'https://*.127.0.0.1'
 ]
 
