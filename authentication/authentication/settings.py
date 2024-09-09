@@ -33,6 +33,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://8000-samjamalcode-produxpp4-351kwxyqlci.ws.codeinstitute-ide.net',
     'https://8000-samjamalcode-produxpp4-feb4l3agbiq.ws.codeinstitute-ide.net',
     'https://8000-samjamalcode-produxpp4-50eku3zv9jc.ws.codeinstitute-ide.net',
+    'https://8000-samjamalcode-produxpp4-aodzrpbafhn.ws.codeinstitute-ide.net',
     'https://*.127.0.0.1'
 ]
 
@@ -133,7 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'auth_system/static')]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
