@@ -111,5 +111,79 @@ table th, td {
 }
 
 
+/* Mobile responsiveness */
+@media only screen and (max-width: 768px) {
+
+    /* Mobile input focus adjustment */
+    input:focus {
+        transform: scale(1); /* Set scale to 1 (no scaling) on mobile */
+    }
+    
+    /* Make inputs and buttons more mobile-friendly */
+    input {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+
+    /* Hide unwanted table columns on smaller screens */
+    table th:nth-child(4), /* taxes column */
+    table th:nth-child(5), /* ads column */
+    table th:nth-child(6), /* discount column */
+    table th:nth-child(8), /* category column */
+    table td:nth-child(4), /* taxes column */
+    table td:nth-child(5), /* ads column */
+    table td:nth-child(6), /* discount column */
+    table td:nth-child(8) /* category column */ {
+        display: none;
+    }
+
+    /* Adjust table layout for mobile */
+    table th,
+    td {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    table th,
+    table td {
+        text-align: left;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+}
+
+/* Extra small screen responsiveness */
+@media only screen and (max-width: 480px) {
+    .crud {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    input {
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 12px;
+    }
+
+    table th,
+    td {
+        font-size: 10px;
+    }
+
+    /* Further reduce padding for small screens */
+    table th,
+    td {
+        padding: 5px;
+    }
+}
+
+
 
 
