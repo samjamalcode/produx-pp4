@@ -146,7 +146,7 @@ footer {
 
 footer .social-media {
     display: flex;
-    gap: 20px; /* Spacing between icons */
+    gap: 20px; 
 }
 
 footer .social-media a {
