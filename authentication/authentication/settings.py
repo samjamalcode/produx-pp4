@@ -27,8 +27,7 @@ SECRET_KEY = 'django-insecure-uh$7c8vxpxfay+d4dis269suae1&e(zvn8m3z3rh072ts-(9ka
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['produx-pp4.herokuapp.com']
-
+ALLOWED_HOSTS = ['produx-pp4-d5b783cb5b5a.herokuapp.com']
 # Trusted origins for CSRF protection
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-samjamalcode-produxpp4-ewh493l12ok.ws.codeinstitute-ide.net',
@@ -36,6 +35,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://8000-samjamalcode-produxpp4-feb4l3agbiq.ws.codeinstitute-ide.net',
     'https://8000-samjamalcode-produxpp4-50eku3zv9jc.ws.codeinstitute-ide.net',
     'https://8000-samjamalcode-produxpp4-aodzrpbafhn.ws.codeinstitute-ide.net',
+    'https://produx-pp4.herokuapp.com',
     'https://*.127.0.0.1'
 ]
 
