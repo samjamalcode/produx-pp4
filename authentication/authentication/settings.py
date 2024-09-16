@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
+import django_heroku
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-uh$7c8vxpxfay+d4dis269suae1&e(zvn8m3z3rh072ts-(9ka'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['produx-pp4.herokuapp.com']
 
 # Trusted origins for CSRF protection
 CSRF_TRUSTED_ORIGINS = [
@@ -86,11 +88,11 @@ WSGI_APPLICATION = 'authentication.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',  
-        'USER': 'postgres',  
-        'PASSWORD': 'My_password1234',  
-        'HOST': 'localhost', 
-        'PORT': '5433',  
+        'NAME': 'd5c2kr83des2p4',  
+        'USER': 'udc1igrkooplsn',  
+        'PASSWORD': 'p72320186bcb9c744efa2b953ee56d5ac45cac758298e09cf0fef5a9fb0255fed',  
+        'HOST': 'c9tiftt16dc3eo.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com', 
+        'PORT': '5432',  
     }
 }
 
@@ -143,3 +145,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'auth_system/static')]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'login-page'
+
+django_heroku.settings(locals())

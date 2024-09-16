@@ -1,6 +1,14 @@
 asgiref==3.8.1
-Django==4.2.1
+coverage==7.6.1
+dj-database-url==2.2.0
+Django==4.2.16
+django-heroku==0.3.1
+django-suit @ https://github.com/darklow/django-suit/tarball/v2#sha256=b40c916de9528ca86bcccd42d1fd54e7773e5071d2bfd9efc576039c1a441c0b
+gunicorn==23.0.0
+mysqlclient==2.2.4
+packaging==24.1
+psycopg2==2.9.9
+psycopg2-binary==2.9.9
 sqlparse==0.5.1
-django-suit==2.0a2
-psycopg2-binary==2.9.6
-coverage-7.6.1
+typing_extensions==4.12.2
+whitenoise==6.7.0
